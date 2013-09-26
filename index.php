@@ -148,7 +148,7 @@
     function TimelinePost(){
       var data = {
         message: "Dummy review link.",
-        link: "<?php echo 'http://'.$_SERVER['HTTP_HOST'].dirname($_SERVER['PHP_SELF']);?>/review_template.html",
+        link: "<?php echo 'http://'.$_SERVER['HTTP_HOST'].dirname($_SERVER['PHP_SELF']);?>/article_tpl.html",
       }, PageID = $('#PageID').val();
 
       if(PageID==''){
