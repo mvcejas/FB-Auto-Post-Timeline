@@ -25,6 +25,10 @@ $loginURL = $fb->getLoginUrl(array(
   'redirect_uri' => $baseURL;
 	)
 );
+$logoutURL = $fb->getLogoutUrl(array(
+	'next' => $baseURL
+	)
+);
 
 if($isAuth && isset($_GET['PageID']) && isset($_GET['ReviewID'])){
 	$PageID    = $_GET['PageID'];
@@ -60,7 +64,7 @@ if($isAuth && isset($_GET['PageID']) && isset($_GET['ReviewID'])){
         <div class="col-lg-6 col-lg-offset-3">
           <div class="panel panel-default">
             <div class="panel-heading">
-            	<a class="pull-right" href="<?php echo $fb->getLogoutUrl();?>">Logout</a>
+            	<a class="pull-right" href="<?php echo $logoutURL;?>">Logout</a>
               <h3 class="panel-title">App Config</h3>
             </div>
             <hr>
