@@ -45,7 +45,7 @@ if(isset($_GET['PageID']) && isset($_GET['ReviewID'])){
     <?php if(!$isAuth):?>
       <div class="row" id="LoginDialog">
         <div class="col-lg-2 col-lg-offset-5">
-          <a class="btn btn-primary btn-block" href="<?php echo $fb->getLoginUrl();?>">Login with Facebook</button>
+          <a class="btn btn-primary btn-block" href="<?php echo $fb->getLoginUrl();?>">Login with Facebook</a>
         </div>
       </div>
     <?php endif;//user not authenticated?>
