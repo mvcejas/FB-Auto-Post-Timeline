@@ -22,7 +22,7 @@ $fb = new Facebook(
 $isAuth = $fb->getUser(); // check if user is authenticated
 $loginURL = $fb->getLoginUrl(array(
 	'scope' => 'publish_stream,manage_pages',
-  'redirect_uri' => $baseURL;
+  'redirect_uri' => $baseURL
 	)
 );
 $logoutURL = $fb->getLogoutUrl(array(
