@@ -148,7 +148,7 @@
     function TimelinePost(){
       var data = {
         message: "Dummy review link.",
-        link: "<?php echo 'http://'.$_SERVER['HTTP_HOST'].dirname($_SERVER['PHP_SELF']);?>/article_tpl.html",
+        link: "www.wegla.net/test/facebookFeed.php?kind=review&id=302&rnd="+(Math.random()*100+1),
       }, PageID = $('#PageID').val();
 
       if(PageID==''){
