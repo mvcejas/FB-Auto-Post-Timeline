@@ -148,7 +148,7 @@
     function TimelinePost(){
       var data = {
         message: "Test review link.",
-        link: "http://www.wegla.net/test/facebookFeed.php?kind=review&id=302&rnd=<?php echo time();?>",
+        link: "http://www.wegla.net/test/facebookFeed.php?kind=restaurant&id=302&rnd=<?php echo time();?>",
       }, PageID = $('#PageID').val();
 
       if(PageID==''){
