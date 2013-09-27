@@ -83,7 +83,7 @@ if(isset($_GET['PageID']) && isset($_GET['ReviewID'])){
 
                 <?php // beginning this line, this will capture your personal information.
                 	$acct = $fb->api('/me');?>
-                	<a class="list-group-item" href="javascript:;" data-pageid="<?php echo $acct['id'];?>" data-accesstoken="<?php echo $fb->getAccessToken();?>" data-toggle="listItem">
+                	<a class="list-group-item" href="<?php echo $baseURL.'?PageID='.$page['id'].'&amp;ReviewID='.time()//test only;?>" data-pageid="<?php echo $acct['id'];?>" data-accesstoken="<?php echo $fb->getAccessToken();?>" data-toggle="listItem">
                     <b class="glyphicon glyphicon-link pull-right" onclick="window.open('http://fb.com/<?php echo $acct['id'];?>','_blank');"></b>
                     <h3 class="list-group-item-heading"><?php echo $acct['name'];?></h3>
                     <p class="list-group-item-text">
