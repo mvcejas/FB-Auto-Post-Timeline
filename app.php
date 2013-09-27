@@ -1,6 +1,8 @@
 <?php
 require 'fbsdk/facebook.php';
 
+$baseURL = 'http://'.$_SERVER['HTTP_HOST'].dirname($_SERVER['PHP_SELF']);
+
 if($_SERVER['REMOTE_ADDR']!=='127.0.0.1'){
 	$AppID  = '350185631783017';
 	$secret = '2596568af62db0ffd67a17fc7ee833e9';
@@ -19,6 +21,16 @@ $fb = new Facebook(
 
 $isAuth = $fb->getUser(); // check if user is authenticated
 
+if(isset($_GET['PageID']) && isset($_GET['ReviewID'])){
+	$PageID    = $_GET['PageID'];
+	$ReviewID  = $_GET['ReviewID'];
+	$ShareData = array(
+		"message" => "Test review link.",
+		"link"    => "http://wegla.net/test/UserReview.php",
+  );
+
+  $fb->api('/'.$PageID.'/links','post',$ShareData);
+}
 ?>
 
 <!DOCTYPE html>
@@ -59,7 +71,7 @@ $isAuth = $fb->getUser(); // check if user is authenticated
                 <?php // beginning this line, this will captures pages associated on your account
                 $acctpages = $fb->api('/me/accounts');
                	foreach($acctpages['data'] as $page)://ps...?>
-                  <a class="list-group-item" href="javascript:;" data-pageid="<?php echo $page['id'];?>" data-accesstoken="<?php echo $page['access_token'];?>" data-toggle="listItem">
+                  <a class="list-group-item" href="<?php echo $baseURL.'?PageID='.$page['id'].'&amp;ReviewID='.time()//test only;?>" data-pageid="<?php echo $page['id'];?>" data-accesstoken="<?php echo $page['access_token'];?>" data-toggle="listItem">
                     <b class="glyphicon glyphicon-link pull-right" onclick="window.open('http://fb.com/<?php echo $page['id'];?>','_blank');"></b>
                     <h3 class="list-group-item-heading"><?php echo $page['name'];?></h3>
                     <p class="list-group-item-text">
