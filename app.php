@@ -1,7 +1,7 @@
 <?php
 require 'fbsdk/facebook.php';
 
-$baseURL = 'http://'.$_SERVER['HTTP_HOST'].dirname($_SERVER['PHP_SELF']);
+$baseURL = 'http://'.$_SERVER['HTTP_HOST'].$_SERVER['PHP_SELF'];
 
 if($_SERVER['REMOTE_ADDR']!=='127.0.0.1'){
 	$AppID  = '350185631783017';
