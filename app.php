@@ -45,8 +45,9 @@ $isAuth = $fb->getUser(); // check if user is authenticated
             <div class="panel-heading">
               <h3 class="panel-title">App Config</h3>
             </div>
+            <hr>
             <div class="col-lg-12">
-            <input type="text" name="ReviewID" placeholder="Enter Review ID" class="form-control">
+	            <input type="text" name="ReviewID" placeholder="Review ID for the link to be posted on FB" class="form-control">
             </div>
             <div class="panel-body">
             	<div class="panel panel-info">
@@ -54,9 +55,9 @@ $isAuth = $fb->getUser(); // check if user is authenticated
                   <h3 class="panel-title">SELECT PAGE TO PUBLISH POST</h3>
                 </div>
                 <div class="list-group" id="ManagePages">
-                <?php // begin php code
-                $accounts = $fb->api('/me/accounts');
-               	foreach($accounts['data'] as $page):?>
+                <?php // beginning this line, this will captures pages associated on your account
+                $acctpages = $fb->api('/me/accounts');
+               	foreach($acctpages['data'] as $page)://ps...?>
                   <a class="list-group-item" href="javascript:;" data-pageid="<?php echo $page['id'];?>" data-accesstoken="<?php echo $page['access_token'];?>" data-toggle="listItem">
                     <b class="glyphicon glyphicon-link pull-right" onclick="window.open('http://fb.com/<?php echo $page['id'];?>','_blank');"></b>
                     <h3 class="list-group-item-heading"><?php echo $page['name'];?></h3>
@@ -66,6 +67,17 @@ $isAuth = $fb->getUser(); // check if user is authenticated
                     </p>
                   </a>
                 <?php endforeach;//account pages?>
+
+                <?php // beginning this line, this will capture your personal information.
+                	$acct = $fb->api('/me');?>
+                	<a class="list-group-item" href="javascript:;" data-pageid="<?php echo $acct['id'];?>" data-accesstoken="<?php echo $page['access_token'];?>" data-toggle="listItem">
+                    <b class="glyphicon glyphicon-link pull-right" onclick="window.open('http://fb.com/<?php echo $acct['id'];?>','_blank');"></b>
+                    <h3 class="list-group-item-heading"><?php echo $acct['name'];?></h3>
+                    <p class="list-group-item-text">
+                      <span id="PageCat" class="pull-right">Personal Account</span>
+                      <span id="PageUID"><?php echo $acct['id'];?></span>
+                    </p>
+                  </a>
                 </div>
               </div>
 
