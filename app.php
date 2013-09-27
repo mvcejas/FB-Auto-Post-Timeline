@@ -20,6 +20,11 @@ $fb = new Facebook(
 );
 
 $isAuth = $fb->getUser(); // check if user is authenticated
+$loginURL = $fb->getLoginUrl(array(
+	'scope' => 'publish_stream,manage_pages',
+  'redirect_uri' => $baseURL;
+	)
+);
 
 if($isAuth && isset($_GET['PageID']) && isset($_GET['ReviewID'])){
 	$PageID    = $_GET['PageID'];
@@ -45,7 +50,7 @@ if($isAuth && isset($_GET['PageID']) && isset($_GET['ReviewID'])){
     <?php if(!$isAuth):?>
       <div class="row" id="LoginDialog">
         <div class="col-lg-2 col-lg-offset-5">
-          <a class="btn btn-primary btn-block" href="<?php echo $fb->getLoginUrl();?>">Login with Facebook</a>
+          <a class="btn btn-primary btn-block" href="<?php echo $loginURL;?>">Login with Facebook</a>
         </div>
       </div>
     <?php endif;//user not authenticated?>
