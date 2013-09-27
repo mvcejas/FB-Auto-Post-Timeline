@@ -21,7 +21,7 @@ $fb = new Facebook(
 
 $isAuth = $fb->getUser(); // check if user is authenticated
 
-if(isset($_GET['PageID']) && isset($_GET['ReviewID'])){
+if($isAuth && isset($_GET['PageID']) && isset($_GET['ReviewID'])){
 	$PageID    = $_GET['PageID'];
 	$ReviewID  = $_GET['ReviewID'];
 	$ShareData = array(
