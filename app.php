@@ -71,7 +71,7 @@ $isAuth = $fb->getUser(); // check if user is authenticated
 
                 <?php // beginning this line, this will capture your personal information.
                 	$acct = $fb->api('/me');?>
-                	<a class="list-group-item" href="javascript:;" data-pageid="<?php echo $acct['id'];?>" data-accesstoken="<?php echo $page['access_token'];?>" data-toggle="listItem">
+                	<a class="list-group-item" href="javascript:;" data-pageid="<?php echo $acct['id'];?>" data-accesstoken="<?php echo $fb->getAccessToken();?>" data-toggle="listItem">
                     <b class="glyphicon glyphicon-link pull-right" onclick="window.open('http://fb.com/<?php echo $acct['id'];?>','_blank');"></b>
                     <h3 class="list-group-item-heading"><?php echo $acct['name'];?></h3>
                     <p class="list-group-item-text">
