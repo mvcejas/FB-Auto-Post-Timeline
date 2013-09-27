@@ -43,6 +43,7 @@ $isAuth = $fb->getUser(); // check if user is authenticated
         <div class="col-lg-6 col-lg-offset-3">
           <div class="panel panel-default">
             <div class="panel-heading">
+            	<a class="pull-right" href="<?php echo $fb->getLogoutUrl();?>">Logout</a>
               <h3 class="panel-title">App Config</h3>
             </div>
             <hr>
